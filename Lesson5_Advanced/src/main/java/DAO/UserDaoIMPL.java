@@ -16,10 +16,10 @@ import DAOInterface.UserDao;
 import domain.User;
 
 public class UserDaoIMPL implements UserDao {
-	private String READ_ALL = "select from * users";
-	private String CREATE = "insert into users (name, lastName ,email,role )values (?,?,?,?)";
-	private String READ_BY_ID = "select from * users where id=?";
-	private String DELETE_BY_ID = "delete from product where id=?";
+	private String READ_ALL = "select *from  user";
+	private String CREATE = "insert into user (name, lastname ,email,role )values (?,?,?,?)";
+	private String READ_BY_ID = "select from * user where id=?";
+	private String DELETE_BY_ID = "delete from user where id=?";
 	private String UPDATE = "update from users set name=? lastName=? email=? role=? password=?    where id=?";
 Logger logger =Logger.getLogger(UserDaoIMPL.class);
 	private Connection connection;
@@ -33,6 +33,7 @@ Logger logger =Logger.getLogger(UserDaoIMPL.class);
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException | ClassNotFoundException | SQLException e) {
 			logger.error(e);
+			e.printStackTrace();
 		}
 	}
 
@@ -51,7 +52,7 @@ Logger logger =Logger.getLogger(UserDaoIMPL.class);
 			userList.add(new User(id, name, lastName, email, role));
 
 		} catch (SQLException e) {
-
+			e.printStackTrace();
 			logger.error(e);
 		}
 
@@ -68,14 +69,14 @@ Logger logger =Logger.getLogger(UserDaoIMPL.class);
 			preparedStatement.setString(3, user.getEmail());
 			preparedStatement.setString(4, user.getRole());
 			preparedStatement.executeUpdate();
-
-			ResultSet result = preparedStatement.executeQuery();
-			result.next();
-
-			result.getInt(result.getInt(1));
+//
+//			ResultSet result = preparedStatement.getGeneratedKeys();
+//			result.next();
+//
+//			result.getInt(result.getInt(1));
 
 		} catch (SQLException e) {
-
+			e.printStackTrace();
 			logger.error(e);
 		}
 		return user;

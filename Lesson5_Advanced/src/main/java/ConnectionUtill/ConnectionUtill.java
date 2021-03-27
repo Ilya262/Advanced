@@ -11,7 +11,7 @@ public class ConnectionUtill {
 		
 		private static String USER_NAME = "root";
 		private static String USER_PASSWORD = "root";
-		private  static String URL = "jdbc:mysql://localhost/Shop?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";	
+		private  static String URL = "jdbc:mysql://localhost/ShopLesson?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";	
 			
 		public static Connection  openConnection() throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException  {
 			Class.forName ("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance ();

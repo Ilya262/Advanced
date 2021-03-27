@@ -32,6 +32,7 @@ public class ProductDaoImpl implements ProductDao {
 			connection = ConnectionUtill.openConnection();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException | ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 			logger.error(e);
 		}
 	}
@@ -45,10 +46,11 @@ public class ProductDaoImpl implements ProductDao {
 			preparedStatement.setDouble(3, product.getPrice());
 			preparedStatement.executeUpdate();
 
-			ResultSet rs = preparedStatement.getGeneratedKeys();
-			rs.next() ;
-			product.setId(rs.getInt(1));
+//			ResultSet rs = preparedStatement.getGeneratedKeys();
+//			rs.next() ;
+//			product.setId(rs.getInt(1));
 		} catch (SQLException e) {
+			e.printStackTrace();
 			logger.error(e);
 		}
 
@@ -71,6 +73,7 @@ public class ProductDaoImpl implements ProductDao {
 			product = new Product(productId, name, description, purchasePrice);
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 			logger.error(e);
 		}
 

@@ -20,9 +20,9 @@ ProductService productService= new ProductServiceImpl();
 UserService userService= new UserServiceIMPL();
 
 
-productService.create(new Product("s", "ss", 44.2));
+productService.create(new Product("lmpa delux", "Delux company", 40.6));
 
-userService.create(new User("s","s","s","ss"));
+userService.create(new User("Ілля","Івасик","ilchik262@gmail.com","User"));
 
 
 

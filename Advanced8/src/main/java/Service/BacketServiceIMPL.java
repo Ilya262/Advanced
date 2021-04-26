@@ -10,7 +10,7 @@ public class BacketServiceIMPL implements BacketService{
 
 	
 BacketDaoIMPL backetdao;
-
+static BacketService backetService;
 public BacketServiceIMPL() {
 
 	backetdao = new BacketDaoIMPL();
@@ -47,5 +47,13 @@ public List<Backet> read_all() {
 }
 
 
+
+public static BacketService getBacketServiceImpl() {
+	if(backetService==null) {
+		
+		backetService=new BacketServiceIMPL();
+	}
+	return backetService;
+}
 	
 }

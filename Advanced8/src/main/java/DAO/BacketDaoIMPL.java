@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 import ConnectionUtill.ConnectionUtill;
 import DAOInterface.BacketDao;
 import Domain.Backet;
+import Service.ProductServiceImpl;
+import ServiceInterface.ProductService;
 
 public class BacketDaoIMPL implements BacketDao {
 
@@ -67,14 +69,14 @@ public class BacketDaoIMPL implements BacketDao {
 			preparedStatement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1, backet.getUser_id());
 			preparedStatement.setInt(2, backet.getProduct_id());
-			preparedStatement.setDate(3, (java.sql.Date) new Date(backet.getPurches_date().getTime()));
-
-			ResultSet result = preparedStatement.getGeneratedKeys();
-			result.next();
-			backet.setId(result.getInt(1));
+			preparedStatement.setDate(3, new java.sql.Date (backet.getPurches_date().getTime()));
+			preparedStatement.executeUpdate();
+//			ResultSet result = preparedStatement.getGeneratedKeys();
+//			result.next();
+//			backet.setId(result.getInt(1));
 
 		} catch (SQLException e) {
-
+				e.printStackTrace();
 			logger.error(e);
 		}
 
@@ -120,8 +122,11 @@ public class BacketDaoIMPL implements BacketDao {
 
 	}
 
-	public Backet update(Backet backet) {
-
-		throw new IllegalStateException("there is no update for bucket");
+	@Override
+	public Backet update(Backet t) {
+		
+		return null;
 	}
+
+
 }

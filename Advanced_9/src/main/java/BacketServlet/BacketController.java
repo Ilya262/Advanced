@@ -24,10 +24,9 @@ public class BacketController extends HttpServlet {
 		String productId = request.getParameter("productId");
 
 		HttpSession session = request.getSession();
-		LoginBean user = (LoginBean) session.getAttribute("currentSessionUser");
-		String userName = user.getUserName();
-		Backet bucket = new Backet(userId, Integer.parseInt(productId), new Date());
-		backetService.create(bucket);
+		  Object userId = session.getAttribute("userId" );
+		  Backet bucket = new Backet(Integer.parseInt(userId.toString()), Integer.parseInt(productId), new Date());
+		  backetService.create(bucket);
 
 		response.setContentType("text");
 		response.setCharacterEncoding("UTF-8");

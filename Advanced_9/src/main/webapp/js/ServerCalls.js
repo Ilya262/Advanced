@@ -31,7 +31,8 @@ $("button.createProduct").click(function() {
 		$.post("BacketController", {'productId':productId},
 				function(data) {
 					if (data == 'Success') {
-						$('#buyProductModal').modal('hide')
+					
+						$("[data-dismiss=modal]").trigger({type:"click"});
 						alert('Success');
 					}
 				});

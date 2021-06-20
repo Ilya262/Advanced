@@ -19,10 +19,10 @@ import domain.Bucket;
 public class BucketDAO implements BucketInterface {
 
 	
-	private static String CREATE = "insert into backet (user_id,product_id,purches_date)values (?,?,?)";
-	private static String READ_ALL = "select *from  backet";
-	private static String READ_BY_ID = "select *from  backet where id=?";
-	private static String DELETE_BY_ID = "delete from backet where id=?";
+	private static String CREATE = "insert into bucket (user_id,product_id,purches_date)values (?,?,?)";
+	private static String READ_ALL = "select *from  bucket";
+	private static String READ_BY_ID = "select *from  bucket where id=?";
+	private static String DELETE_BY_ID = "delete from bucket where id=?";
 	
 	Logger logger = Logger.getLogger(BucketDAO.class);
 	Connection connection;
@@ -45,15 +45,14 @@ public class BucketDAO implements BucketInterface {
 			preparedStatement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1, backet.getUser_id());
 			preparedStatement.setInt(2, backet.getProduct_id());
-			preparedStatement.setDate(3,  (java.sql.Date) new Date(backet.getPurches_date().getTime()));
+			preparedStatement.setDate(3,   new java.sql.Date(backet.getPurches_date().getTime()));
 
-			ResultSet result = preparedStatement.getGeneratedKeys();
-			result.next();
-			backet.setId(result.getInt(1));
+			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
-
+			e.printStackTrace();
 			logger.error(e);
+			
 		}
 
 		return backet;
@@ -68,12 +67,12 @@ public class BucketDAO implements BucketInterface {
 			preparedStatement = connection.prepareStatement(READ_ALL);
 			ResultSet result = preparedStatement.executeQuery();
 			result.next();
-
+Integer bucketId=result.getInt("id");
 			Integer user_id = result.getInt("user_id");
 			Integer product_id = result.getInt("product_id");
 			Date purches_date = result.getDate("purches_date");
 
-			backetlist.add(new Bucket(user_id, product_id, purches_date));
+			backetlist.add(new Bucket(bucketId, user_id, product_id, purches_date));
 		} catch (SQLException e) {
 
 			logger.error(e);

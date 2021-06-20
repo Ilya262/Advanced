@@ -127,6 +127,7 @@ public class ProductDAO implements ProductInterface {
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			logger.error(e);
 		}
 	}

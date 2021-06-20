@@ -1,3 +1,6 @@
+
+
+
 function loginRegisterSwitch() {
 	$('form').animate({
 		height: "toggle",

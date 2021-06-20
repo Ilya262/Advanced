@@ -24,7 +24,7 @@ import dto.BacketDTO;
 /**
  * Servlet implementation class BacketsController
  */
-@WebServlet("/BacketsController")
+@WebServlet("/backets")
 public class BacketsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

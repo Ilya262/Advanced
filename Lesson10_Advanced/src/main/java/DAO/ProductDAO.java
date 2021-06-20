@@ -12,10 +12,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import ConnectionUtill.ConnectionUtill;
-import DAOInterface.ProductDao;
-import Domain.Product;
+import Interface.ProductInterface;
+import domain.Product;
 
-public class ProductDaoImpl implements ProductDao {
+public class ProductDAO implements ProductInterface {
 
 	private static String READ_ALL = "select * from product";
 	private static String CREATE = "insert into product(name, description, price) values (?,?,?)";
@@ -25,16 +25,15 @@ public class ProductDaoImpl implements ProductDao {
 
 	private Connection connection;
 	private PreparedStatement preparedStatement;
-
-//	Logger logger = Logger.getLogger(ProductDaoImpl.class);
-	public ProductDaoImpl() {
-
+	Logger logger = Logger.getLogger(ProductDAO.class);
+	public ProductDAO() {
+			
 		try {
 			connection = ConnectionUtill.openConnection();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-//			logger.error(e);
+			logger.error(e);
 		}
 	}
 
@@ -52,12 +51,13 @@ public class ProductDaoImpl implements ProductDao {
 //			product.setId(rs.getInt(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
-//			logger.error(e);
+			logger.error(e);
 		}
 
 		return product;
 	}
 
+	
 	@Override
 	public List<Product> read_all() {
 		List<Product> productRecords = new ArrayList<>();
@@ -73,12 +73,13 @@ public class ProductDaoImpl implements ProductDao {
 				productRecords.add(new Product(productId, name, description, purchasePrice));
 			}
 		} catch (SQLException e) {
-//			logger.error(e);
+			logger.error(e);
 		}
 
 		return productRecords;
 	}
-
+	
+	
 	@Override
 	public Product read_by_id(Integer id) {
 		Product product = null;
@@ -96,7 +97,7 @@ public class ProductDaoImpl implements ProductDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-//			logger.error(e);
+			logger.error(e);
 		}
 
 		return product;
@@ -113,7 +114,7 @@ public class ProductDaoImpl implements ProductDao {
 			preparedStatement.setInt(4, product.getId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-//			logger.error(e);
+			logger.error(e);
 		}
 
 		return product;
@@ -126,8 +127,10 @@ public class ProductDaoImpl implements ProductDao {
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-//			logger.error(e);
+			logger.error(e);
 		}
 	}
+
+	
 
 }

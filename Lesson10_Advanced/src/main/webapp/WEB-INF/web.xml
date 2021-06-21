@@ -6,5 +6,45 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
+	<filter>
+		<filter-name>BucketFilter</filter-name>
+		<display-name>BucketFilter</display-name>
+		<description></description>
+		<filter-class>filter.BucketFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>ProductFilter</filter-name>
+		<display-name>ProductFilter</display-name>
+		<description></description>
+		<filter-class>filter.ProductFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>CreateProductFilter</filter-name>
+		<display-name>CreateProductFilter</display-name>
+		<description></description>
+		<filter-class>filter.CreateProductFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>CabinetFilter</filter-name>
+		<display-name>CabinetFilter</display-name>
+		<description></description>
+		<filter-class>filter.CabinetFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>BucketFilter</filter-name>
+		<url-pattern>/BucketFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ProductFilter</filter-name>
+		<url-pattern>/ProductFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CreateProductFilter</filter-name>
+		<url-pattern>/CreateProductFilter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CabinetFilter</filter-name>
+		<url-pattern>/CabinetFilter</url-pattern>
+	</filter-mapping>
 	
 </web-app>

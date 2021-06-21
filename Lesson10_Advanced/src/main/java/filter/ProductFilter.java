@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebFilter;
 import Schared.FilterService;
 import domain.Role;
 
-@WebFilter("/product.jsp")
+@WebFilter("/product")
 public class ProductFilter implements Filter {
 
 	public FilterService filterService = FilterService.getFilterUser();

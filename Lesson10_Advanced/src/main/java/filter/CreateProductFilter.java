@@ -15,7 +15,7 @@ import Schared.FilterService;
 import domain.Role;
 
 
-@WebFilter("/product")
+@WebFilter("/createProduct.jsp")
 public class CreateProductFilter implements Filter {
 
  
@@ -26,7 +26,7 @@ public class CreateProductFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 	
-		filterService.doFilterValidation(request, response, chain, Arrays.asList(Role.USER));
+		filterService.doFilterValidation(request, response, chain, Arrays.asList(Role.ADMIN));
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

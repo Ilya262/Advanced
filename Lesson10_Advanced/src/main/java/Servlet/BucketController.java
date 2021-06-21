@@ -14,9 +14,7 @@ import Service.BucketMPL;
 import ServiceInterface.BucketService;
 import domain.Bucket;
 
-/**
- * Servlet implementation class BucletController
- */
+
 @WebServlet("/bucket")
 public class BucketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
